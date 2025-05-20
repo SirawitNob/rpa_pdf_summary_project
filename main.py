@@ -5,8 +5,11 @@ import base64
 import fitz  # PyMuPDF
 from openpyxl import load_workbook
 import openai
+from dotenv import load_dotenv
 import re
 import pdfplumber
+
+load_dotenv()
 
 # === CONFIGURATION ===
 EXCEL_INPUT_FILE = "input_excel.xlsx"
@@ -17,7 +20,8 @@ TEMP_PDF_DIR = "pdf_files"
 EXCEL_OUTPUT_FILE = "output_with_blob_and_summary.xlsx"
 
 # Set your OpenAI API Key
-openai.api_key = ""
+api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = api_key
 
 
 def download_pdf(url, save_path):
