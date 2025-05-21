@@ -2,3 +2,4 @@ pdf_files/
 input_excel.xlsx
 .idea/
 .env
+__pycache__/
