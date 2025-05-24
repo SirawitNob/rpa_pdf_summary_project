@@ -2,8 +2,7 @@ import os
 import pandas as pd
 
 from pdf_utils import download_pdf
-from gpt_utils import summarize_text_with_gpt_from_pages
-
+from llama_utils import summarize_with_llama
 # === CONFIGURATION ===
 EXCEL_INPUT_FILE = "input_excel.xlsx"
 SHEET_NAME = "Sheet1"
@@ -25,7 +24,7 @@ def main():
             print(f"Processing row {idx + 2} | URL: {url}")
             filename = f"{TEMP_PDF_DIR}/file_{idx}.pdf"
             if download_pdf(url, filename):
-                summary = summarize_text_with_gpt_from_pages(filename, 40, 50)
+                summary = summarize_with_llama(filename, 42, 45)
                 print(summary)
 
                 df.at[idx, OUTPUT_SUMMARY_COLUMN] = summary
